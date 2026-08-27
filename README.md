@@ -118,26 +118,32 @@ Question_4(QUESTION_4_SHAPE_INFINITY, 3U);
 
 ### 代表性锁定日志
 
-以下截取100 kHz同频同相模式的一次启动与稳态过程。`df`为闭环估计的残余频差，`dph`为实测相位差，`err`为相位控制误差：
+以下截取100 kHz同频同相模式的一次完整的启动与稳态过程，串口调试信息每500ms发送一次。`fcmd`为DDS指令频率，`df`为闭环估计的残余频差，`pcmd`为DDS相位指令，`dph`为实测相位差，`err`为相位控制误差：
 
 ```text
-QF,mode=1,cap=0,valid=1,pv=1,lock=0,hold=0,fraw=99992.62,fin=100000.0,fbase=100000.0,fcmd=100000.000,trim=0.000,df=0.000,win=0,step=0,pcmd=0.00,dph=166.62,err=0.00
-QF,mode=1,cap=0,valid=1,pv=1,lock=0,hold=0,fraw=100000.00,fin=100000.0,fbase=100000.0,fcmd=100001.516,trim=1.513,df=-0.381,win=126,step=6,pcmd=-75.06,dph=0.01,err=-0.01
-QF,mode=1,cap=0,valid=1,pv=1,lock=1,hold=1,fraw=100000.00,fin=100000.0,fbase=100000.0,fcmd=100001.688,trim=1.689,df=0.004,win=125,step=5,pcmd=-67.85,dph=0.00,err=-0.00
-QF,mode=1,cap=0,valid=1,pv=1,lock=1,hold=1,fraw=100000.00,fin=100000.0,fbase=100000.0,fcmd=100001.688,trim=1.689,df=0.003,win=251,step=5,pcmd=-68.64,dph=-0.05,err=0.05
-QF,mode=1,cap=0,valid=1,pv=1,lock=1,hold=1,fraw=100000.00,fin=100000.0,fbase=100000.0,fcmd=100001.688,trim=1.689,df=0.005,win=251,step=5,pcmd=-69.35,dph=0.02,err=-0.02
-QF,mode=1,cap=0,valid=1,pv=1,lock=1,hold=1,fraw=100000.00,fin=100000.0,fbase=100000.0,fcmd=100001.688,trim=1.689,df=0.004,win=251,step=5,pcmd=-70.14,dph=-0.02,err=0.02
-QF,mode=1,cap=0,valid=1,pv=1,lock=1,hold=1,fraw=100000.00,fin=100000.0,fbase=100000.0,fcmd=100001.688,trim=1.689,df=-0.001,win=252,step=5,pcmd=-70.22,dph=-0.02,err=0.02
-QF,mode=1,cap=0,valid=1,pv=1,lock=1,hold=1,fraw=100000.00,fin=100000.0,fbase=100000.0,fcmd=100001.688,trim=1.689,df=0.005,win=252,step=5,pcmd=-71.10,dph=0.04,err=-0.04
-QF,mode=1,cap=0,valid=1,pv=1,lock=1,hold=1,fraw=100000.00,fin=100000.0,fbase=100000.0,fcmd=100001.688,trim=1.689,df=0.003,win=252,step=5,pcmd=-72.16,dph=0.05,err=-0.05
-QF,mode=1,cap=0,valid=1,pv=1,lock=1,hold=1,fraw=100000.00,fin=100000.0,fbase=100000.0,fcmd=100001.688,trim=1.689,df=0.005,win=250,step=5,pcmd=-73.04,dph=0.04,err=-0.04
-QF,mode=1,cap=0,valid=1,pv=1,lock=1,hold=1,fraw=100000.00,fin=100000.0,fbase=100000.0,fcmd=100001.688,trim=1.689,df=0.003,win=252,step=5,pcmd=-73.74,dph=0.04,err=-0.04
-QF,mode=1,cap=0,valid=1,pv=1,lock=1,hold=1,fraw=100000.00,fin=100000.0,fbase=100000.0,fcmd=100001.688,trim=1.689,df=0.004,win=254,step=5,pcmd=-74.36,dph=-0.07,err=0.07
-QF,mode=1,cap=0,valid=1,pv=1,lock=1,hold=1,fraw=100000.00,fin=100000.0,fbase=100000.0,fcmd=100001.688,trim=1.689,df=0.008,win=253,step=5,pcmd=-75.41,dph=0.03,err=-0.03
-QF,mode=1,cap=0,valid=1,pv=1,lock=1,hold=1,fraw=100000.00,fin=100000.0,fbase=100000.0,fcmd=100001.688,trim=1.689,df=0.001,win=254,step=5,pcmd=-75.76,dph=-0.01,err=0.01
-QF,mode=1,cap=0,valid=1,pv=1,lock=1,hold=1,fraw=100000.00,fin=100000.0,fbase=100000.0,fcmd=100001.688,trim=1.689,df=0.002,win=251,step=5,pcmd=-75.94,dph=0.04,err=-0.04
-QF,mode=1,cap=0,valid=1,pv=1,lock=1,hold=1,fraw=100000.00,fin=100000.0,fbase=100000.0,fcmd=100001.688,trim=1.689,df=0.003,win=254,step=5,pcmd=-76.73,dph=0.03,err=-0.03
-QF,mode=1,cap=0,valid=1,pv=1,lock=1,hold=1,fraw=100000.00,fin=100000.0,fbase=100000.0,fcmd=100001.688,trim=1.689,df=0.004,win=254,step=5,pcmd=-77.52,dph=-0.01,err=0.01
+QF,lock=0,fcmd=100000.000,df=0.000,pcmd=0.00,dph=166.62,err=0.00
+QF,lock=0,fcmd=100001.516,df=-0.381,pcmd=-75.06,dph=0.01,err=-0.01
+QF,lock=1,fcmd=100001.688,df=0.004,pcmd=-67.85,dph=0.00,err=-0.00
+QF,lock=1,fcmd=100001.688,df=0.003,pcmd=-68.64,dph=-0.05,err=0.05
+QF,lock=1,fcmd=100001.688,df=0.005,pcmd=-69.35,dph=0.02,err=-0.02
+QF,lock=1,fcmd=100001.688,df=0.004,pcmd=-70.14,dph=-0.02,err=0.02
+QF,lock=1,fcmd=100001.688,df=-0.001,pcmd=-70.22,dph=-0.02,err=0.02
+QF,lock=1,fcmd=100001.688,df=0.005,pcmd=-71.10,dph=0.04,err=-0.04
+QF,lock=1,fcmd=100001.688,df=0.003,pcmd=-72.16,dph=0.05,err=-0.05
+QF,lock=1,fcmd=100001.688,df=0.005,pcmd=-73.04,dph=0.04,err=-0.04
+QF,lock=1,fcmd=100001.688,df=0.003,pcmd=-73.74,dph=0.04,err=-0.04
+QF,lock=1,fcmd=100001.688,df=0.004,pcmd=-74.36,dph=-0.07,err=0.07
+QF,lock=1,fcmd=100001.688,df=0.008,pcmd=-75.41,dph=0.03,err=-0.03
+QF,lock=1,fcmd=100001.688,df=0.001,pcmd=-75.76,dph=-0.01,err=0.01
+QF,lock=1,fcmd=100001.688,df=0.002,pcmd=-75.94,dph=0.04,err=-0.04
+QF,lock=1,fcmd=100001.688,df=0.003,pcmd=-76.73,dph=0.03,err=-0.03
+QF,lock=1,fcmd=100001.688,df=0.004,pcmd=-77.52,dph=-0.01,err=0.01
+QF,lock=1,fcmd=100001.688,df=0.004,pcmd=-77.96,dph=-0.04,err=0.04
+QF,lock=1,fcmd=100001.688,df=-0.002,pcmd=-77.70,dph=-0.04,err=0.04
+QF,lock=1,fcmd=100001.688,df=0.003,pcmd=-77.61,dph=-0.03,err=0.03
+QF,lock=1,fcmd=100001.688,df=-0.002,pcmd=-77.43,dph=0.06,err=-0.06
+QF,lock=1,fcmd=100001.688,df=0.001,pcmd=-77.43,dph=-0.02,err=0.02
+QF,lock=1,fcmd=100001.688,df=-0.000,pcmd=-77.43,dph=-0.00,err=0.00
 ```
 
 日志可以看到：初始相位差约166.62°；闭环将DDS指令频率修正至约100001.688 Hz后进入`lock=1, hold=1`，随后相位误差保持在±0.07°以内。
