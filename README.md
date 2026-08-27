@@ -63,7 +63,6 @@ firmware/
 docs/
 ├─ algorithm.md       算法演进与关键问题
 ├─ hardware-wiring.md 硬件接线
-└─ github-upload.md   GitHub新手上传方法
 ```
 
 ## 关键入口
